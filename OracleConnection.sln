@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleConnection", "OracleConnection.csproj", "{C3CF6E94-FF83-F571-31C2-55D174786CA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3CF6E94-FF83-F571-31C2-55D174786CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3CF6E94-FF83-F571-31C2-55D174786CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3CF6E94-FF83-F571-31C2-55D174786CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3CF6E94-FF83-F571-31C2-55D174786CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2988A02C-017C-4ABB-AEDF-00C09474A1E5}
+	EndGlobalSection
+EndGlobal
