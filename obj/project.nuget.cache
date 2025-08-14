@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x5lBKuQLMOo=",
+  "dgSpecHash": "UFFsek7W54E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Downloads\\gpt with bot\\OracleConnection.csproj",
+  "projectFilePath": "C:\\Users\\User\\Documents\\project\\chatbot-with-DB\\OracleConnection.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\oracle.manageddataaccess.core\\23.9.1\\oracle.manageddataaccess.core.23.9.1.nupkg.sha512",

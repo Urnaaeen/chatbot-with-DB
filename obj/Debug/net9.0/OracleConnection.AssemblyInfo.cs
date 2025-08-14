@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OracleConnection")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+169f38b899123a0f5c78408763d3d5ddd5a972b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("OracleConnection")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OracleConnection")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

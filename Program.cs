@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace OracleDbConnection
@@ -7,6 +8,7 @@ namespace OracleDbConnection
     {
         static async Task Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             // Configuration
             string connectionString = "Data Source=160.187.40.43:1521/dw;User Id=erp_development;Password=green;";
             var openAiApiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
@@ -23,7 +25,7 @@ namespace OracleDbConnection
                 Console.WriteLine("🚀 Column Embedding & Vector Search Програм");
                 Console.WriteLine("=".PadRight(50, '='));
 
-                List<string> columnTextsDB = null;
+                //List<string> columnTextsDB = null;
                 List<string> columnTexts = null;
                 List<float[]> embeddings = null;
 
@@ -33,12 +35,12 @@ namespace OracleDbConnection
                     Console.WriteLine("✅ Embedding файл байна - уншиж байна...");
 
                     // Oracle-аас column мэдээлэл авах (текст жагсаалт)
-                    columnTextsDB = oracleService.GetBiEmployeeTablesInfo();
+                    columnTexts = oracleService.GetBiEmployeeTablesInfo();
 
                     // Хадгалсан embeddings унших
                     embeddings = await storageService.LoadColumnEmbeddingsAsync();
 
-                    if (embeddings != null && columnTextsDB.Count == embeddings.Count)
+                    if (embeddings != null && columnTexts.Count == embeddings.Count)
                     {
                         Console.WriteLine($"✅ {embeddings.Count} embedding амжилттай уншигдлаа");
                     }
@@ -56,20 +58,20 @@ namespace OracleDbConnection
 
                     // Oracle-аас column мэдээлэл авах
                     Console.WriteLine("🔍 Oracle-аас мэдээлэл авч байна...");
-                    columnTextsDB = oracleService.GetBiEmployeeTablesInfo();
+                    columnTexts = oracleService.GetBiEmployeeTablesInfo();
 
                     //энэ хэсэгт columnTexts ийн ард chatgpt-гээр монгол decs-ийг бичүүлээд өөр list авах
 
-                    if (columnTextsDB.Count == 0)
+                    if (columnTexts.Count == 0)
                     {
                         Console.WriteLine("❌ Column олдсонгүй!");
                         return;
                     }
 
-                    Console.WriteLine($"✅ {columnTextsDB.Count} column олдлоо\n");
+                    Console.WriteLine($"✅ {columnTexts.Count} column олдлоо\n");
 
                     // ChatGPT ашиглан монгол тайлбар нэмэх
-                    columnTexts = await chatGptService.AddMongolianDescriptionsAsync(columnTextsDB);
+                    //columnTexts = await chatGptService.AddMongolianDescriptionsAsync(columnTextsDB);
 
                     //
 
@@ -96,6 +98,8 @@ namespace OracleDbConnection
                     Console.Write("\n> ");
                     string userQuery = Console.ReadLine();
 
+                    string translatedText = await chatGptService.TranslateMongolianToEnglishAsync(userQuery);
+
                     if (string.IsNullOrWhiteSpace(userQuery) || userQuery.ToLower() == "exit")
                     {
                         Console.WriteLine("👋 Баяртай!");
@@ -104,7 +108,7 @@ namespace OracleDbConnection
 
                     try
                     {
-                        var searchResults = await vectorSearchService.SearchAsync(userQuery, embeddingService, 20);
+                        var searchResults = await vectorSearchService.SearchAsync(translatedText, embeddingService, 10);
 
                         if (searchResults.Count == 0)
                         {
